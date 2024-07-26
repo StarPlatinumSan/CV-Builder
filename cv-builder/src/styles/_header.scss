@@ -1,0 +1,77 @@
+@use "variables" as *;
+
+h1 {
+    color: $lightWhiteText;
+    padding: 2rem;
+    z-index: 0;
+}
+
+.header {
+    text-align: center;
+    background: linear-gradient(135deg, $coral, $darkCoral);
+    border-bottom-right-radius: 50px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px #414141b6;
+    margin-bottom: 1rem;
+}
+
+.circle {
+    position: absolute;
+    background: linear-gradient(115deg, $lightCoral, $darkCoral);
+    opacity: 0.7;
+    padding: 5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    outline: 2px solid #eb2c01e8;
+    z-index: -1;
+}
+
+.circleTop {
+    top: 0;
+    left: 0;
+    transform: translate(-40%, -40%);
+}
+
+.circleBottom {
+    right: 0;
+    bottom: 0;
+    transform: translate(40%, 40%);
+}
+
+.smallCircle {
+    padding: 2rem;
+    right: 15%;
+    bottom: 70%;
+}
+
+.smallerCircle {
+    padding: 2rem;
+    left: 15%;
+    top: 70%;
+}
+
+.otherSmallerCircleTop {
+    padding: 0.75rem;
+    top: 0;
+    right: 40%;
+    transform: translateY(-50%);
+}
+
+.otherSmallerCircleBottom {
+    padding: 0.75rem;
+    bottom: 0;
+    left: 40%;
+    transform: translateY(50%);
+}
+
+.resume {
+    color: $cyanBlue;
+    text-shadow:
+    -1px -1px 0 $lightGrayText,
+    1px -1px 0 $lightGrayText,
+    -1px 1px 0 $lightGrayText,
+    1px 1px 0 $lightGrayText;
+}
+

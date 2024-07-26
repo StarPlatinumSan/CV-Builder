@@ -1,0 +1,10 @@
+@use "variables" as *;
+
+p {
+    color: white;
+}
+
+.mainTemplate {
+    background-color: $coral;
+    padding: 2rem;
+}

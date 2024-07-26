@@ -1,0 +1,15 @@
+@use "variables" as *;
+
+.footer {
+    background-color: $dark;
+    min-height: 25rem;
+    border-top: 2px solid $lightDark;
+    display: flex;
+    position: relative;
+    margin-top: 1rem;
+}
+
+.author {
+    color: $lightWhiteText;
+    font-size: 0.75rem;
+}
