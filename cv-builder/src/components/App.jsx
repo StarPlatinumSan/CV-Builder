@@ -28,8 +28,12 @@ export default function App() {
     description: ''
   })
 
+  /* FUNCTION */
+
   const [currentSection, setCurrentSection] = useState('general');
   const [showTemplate, setShowTemplate] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [rotated, setIsRotated] = useState(false);
 
   /* FUNCTION */
 
@@ -166,6 +170,11 @@ export default function App() {
     }
   }
 
+  const showMenu = () => {
+    setIsMenuOpen(prevState => !prevState);
+    setIsRotated(prevState => !prevState);
+  };
+
 
   /* FUNCTION */
 
@@ -173,6 +182,11 @@ export default function App() {
     <div className="mainApp">
       {!showTemplate ? (
       <>
+        <div className={`menuSlideDown ${isMenuOpen ? 'open' : ''}`}>
+          <button className={`mobileMenu ${rotated ? 'rotated' : ''}`} onClick={showMenu}></button>
+        </div>
+        
+        {/* Make this into a component? */}
         <div className="menu">
               <h2 className="menuTitle">Sections</h2>
               <button className="buttonMenu" id='generalButton' onClick={sectionButtons}>😄 General </button>
@@ -188,29 +202,29 @@ export default function App() {
 
                   <div className="name field">
                     <label htmlFor="firstName">First Name:</label>
-                    <input type="text" id="firstName" name='firstName' className='inputText' value={generalData.firstName} onChange={handleChange} /* required */ />
+                    <input type="text" id="firstName" name='firstName' className='inputText' value={generalData.firstName} onChange={handleChange} required />
                   </div>
                   
                   <div className="name field">
                     <label htmlFor="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name='lastName' className='inputText' value={generalData.lastName} onChange={handleChange} /* required */ />
+                    <input type="text" id="lastName" name='lastName' className='inputText' value={generalData.lastName} onChange={handleChange} required />
                   </div>
 
                 </div>
                 <div className="contactField">
                   <div className="field contact">
                     <label htmlFor="email">Email:</label>
-                    <input type="text" id="email" name='email' className='inputText' value={generalData.email} onChange={handleChange} /* required */ />
+                    <input type="text" id="email" name='email' className='inputText' value={generalData.email} onChange={handleChange} required />
                   </div>
                   <div className="field contact">
                     <label htmlFor="phoneNumber">Phone Number:</label>
-                    <input type="text" id="phoneNumber" name="phoneNumber" className='inputText' value={generalData.phoneNumber} onChange={handleChange} placeholder="123-456-7890" /* required */ />
+                    <input type="text" id="phoneNumber" name="phoneNumber" className='inputText' value={generalData.phoneNumber} onChange={handleChange} placeholder="123-456-7890" required />
                   </div>
                 </div>
                 
                 <div className="field">
                   <label htmlFor="address">Address:</label>
-                  <input type="text" id="address" name='address' className='inputText' value={generalData.address} onChange={handleChange} /* required */ />
+                  <input type="text" id="address" name='address' className='inputText' value={generalData.address} onChange={handleChange} required />
                 </div>
                 <div className="field">
                   <label htmlFor="portfolio">Portfolio:</label>

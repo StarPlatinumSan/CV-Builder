@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 export default function App() {
-
   return (
     <>
       <header className='header'>
@@ -13,7 +12,7 @@ export default function App() {
         <div className='smallerCircle circle'></div>
         <div className="otherSmallerCircleTop circle"></div>
         <div className="otherSmallerCircleBottom circle"></div>
-      </header>
+      </header> 
     </>
   )
 }

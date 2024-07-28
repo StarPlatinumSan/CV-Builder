@@ -24,12 +24,25 @@ html, body {
     overflow-x: hidden;
     background-color: $dark;
     min-height: 100vh;
+    position: relative;
 }
 
-.main {
-    display: flex;
+.author {
+    text-align: center;
     position: relative;
-    align-self: center;
+    display: inline-block;
+
+    .nameAuthor {
+        color: whitesmoke;
+        text-decoration: none;
+        transition: transform 0.5s ease;
+        display: inline-block;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+    
 }
 
 .menu {
@@ -51,12 +64,6 @@ html, body {
 }
 
 @media screen and (min-width: 1100px) {
-    .header {
-        h1 {
-            padding: 3rem;
-        }
-    }
-
     .app {
         min-width: 60vw;
 

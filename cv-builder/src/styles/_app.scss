@@ -67,6 +67,7 @@ textarea {
 
 .mainApp {
     display: flex;
+    align-self: center;
 }
 
 .app {
@@ -79,7 +80,6 @@ textarea {
     margin-right: 1rem;
     z-index: 1;
     min-width: 90vw;
-    position: relative;
     padding: 2rem 1rem 2rem 1rem;
 }
 
@@ -191,3 +191,36 @@ textarea {
     flex-direction: column;
     gap: 0.5rem;
 }
+
+/* SEPARATION */
+
+.mobileMenu {
+    background-image: url("../../public/menu.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 1.5rem;
+    position: absolute;
+    border: none;
+    background-color: inherit;
+    transition: transform 0.1s ease;
+    display: inline-block;
+    left: 0;
+    top: 25%;
+    z-index: 50;
+    background-color: $darkCoral;
+    transition: transform 0.3s ease;
+}
+
+.mobileMenu.rotated {
+    transform: rotate(180deg);
+}
+
+.menuSlideDown {
+    position: absolute;
+    padding: 2rem;
+    width: 95vw;
+    background-color: green;
+    top: -1rem;
+    z-index: 45;
+}
+
