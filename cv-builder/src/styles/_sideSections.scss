@@ -1,1 +1,58 @@
 @use "variables" as *;
+
+.menu {
+    padding: 2rem 1rem 2rem 1rem;
+    background-color: $dark;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    outline: 2px solid $lightDark;
+    position: relative;
+    justify-content: center;
+}
+
+.buttonMenu {
+    background: $lightCoral;
+    border: none;
+    border-radius: 2px;
+    padding: 2rem;
+    transition: transform 0.2s ease;
+    color: $lightWhiteText;
+    font-size: 1.2rem;
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $coral;
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+.buttonTemplateMenu {
+    background-color: $darkCoral;
+
+    &:hover {
+        background-color: $cyanBlue;
+        color: $dark;
+    }
+}
+
+.menuTitle {
+    color: $lightWhiteText;
+    align-self: center;
+    position: absolute;
+    top: -1rem;
+    left: -0.6rem;
+}
+
+.submitInfo {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    font-size: 0.9rem;
+    color: $lightGrayText;
+}

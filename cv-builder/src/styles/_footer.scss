@@ -1,15 +1,17 @@
 @use "variables" as *;
 
 .footer {
-    background-color: $dark;
-    min-height: 25rem;
-    border-top: 2px solid $lightDark;
+    background: $dark;
     display: flex;
-    position: relative;
+    position: absolute;
+    bottom: 5px;
+    width: 100vw;
     margin-top: 1rem;
 }
 
 .author {
     color: $lightWhiteText;
     font-size: 0.75rem;
+    text-align: center;
+    width: 100%;
 }

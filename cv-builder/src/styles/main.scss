@@ -27,5 +27,72 @@ html, body {
 }
 
 .main {
+    display: flex;
     position: relative;
+    align-self: center;
+}
+
+.menu {
+    display: none;
+}
+
+@media screen and (min-width: 800px) {
+    .main {
+        display: flex;
+    }
+
+    .menu {
+        display: flex;
+    }
+
+    .app {
+        min-width: 50vw;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .header {
+        h1 {
+            padding: 3rem;
+        }
+    }
+
+    .app {
+        min-width: 60vw;
+
+        .buttonApp {
+            max-width: 25%;
+        }
+
+        .fullName {
+            flex-direction: row;  
+            justify-content: space-between;
+
+            & > * {
+                width: 100%;
+            }
+        }
+
+        .studyDate {
+            flex-direction: row;
+        }
+
+        .experienceDate {
+            flex-direction: row;
+        }
+
+        .contactField {
+            flex-direction: row;
+
+            .contact {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .app {
+        min-width: 50vw;
+    }
 }

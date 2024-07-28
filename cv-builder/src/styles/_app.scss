@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "sideSections.scss";
 
 label {
     font-size: 0.75rem;
@@ -9,13 +10,13 @@ input {
     background-color: $lightDark;
     border: 1px solid $lightGrayText;
     outline: none;
-    padding: 0.5rem;
-    width: 75vw;
+    padding: 0.75rem;
+    min-width: 5rem;
     color: $lightWhiteText;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease;
 
     &:focus {
-        transform: scale(1.025);
+        transform: scale(1.02);
         outline: 1px solid $cyanBlue;
     }
     
@@ -31,18 +32,24 @@ textarea {
     background-color: $lightDark;
     border: none;
     outline: none;
+    resize: vertical;
+    min-height: 6rem;
+    color: $lightWhiteText;
+    transition: transform 0.3s ease;
+
     &:focus {
-        outline: 2px solid $cyanBlue;
+        outline: 1px solid $cyanBlue;
+        transform: scale(1.02);
     }
 }
 
-button {
-    padding: 1rem;
+.buttonApp {
+    padding: 1.25rem;
     max-width: 50%;
     background-color: $lightCoral;
     border: none;
-    border-radius: 5px;
-    font-size: 0.7em;
+    border-radius: 2px;
+    font-size: 0.8em;
     color: whitesmoke;
     transition: background-color 0.3s ease, transform 0.3s ease;
 
@@ -53,10 +60,13 @@ button {
     }
 
     &:active {
-        background-color: $darkCyanBlue;
         transform: scale(0.98);
     }
 
+}
+
+.mainApp {
+    display: flex;
 }
 
 .app {
@@ -67,11 +77,14 @@ button {
     outline: 2px solid $lightDark;
     margin-left: 1rem;
     margin-right: 1rem;
-    padding: 1rem;
     z-index: 1;
-    /* position: relative; */
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    min-width: 90vw;
+    position: relative;
+    padding: 2rem 1rem 2rem 1rem;
+}
+
+.formSection {
+    width: 100%;
 }
 
 .field {
@@ -97,8 +110,9 @@ button {
     color: $lightWhiteText;
     background-color: $dark;
     position: absolute;
-    top: -3rem;
-    left: 0rem;
+    top: -2rem;
+    left: -1rem;
+    transform: translate(-0.4rem, -50%);
 }
 
 /* SEPARATION */
@@ -113,6 +127,11 @@ button {
     font-size: 0.75rem;
     max-width: 75%;
     align-self: center;
+
+    &:hover {
+        background-color: $cyanBlue;
+        color: $dark;
+    }
 }
 
 .submitOrPrevious {
@@ -141,4 +160,34 @@ button {
     transform: translateY(0);
     position: relative;
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* SEPARATION */
+
+.templateContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.editButton {
+    align-self: center;
+}
+
+.studyDate {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.experienceDate {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contactField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
