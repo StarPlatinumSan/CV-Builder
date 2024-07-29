@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Template from './Template';
+import SideSections from './SideSections';
 
 export default function App() {
   const [generalData, setGeneralData] = useState({
@@ -186,14 +187,7 @@ export default function App() {
           <button className={`mobileMenu ${rotated ? 'rotated' : ''}`} onClick={showMenu}></button>
         </div>
         
-        {/* Make this into a component? */}
-        <div className="menu">
-              <h2 className="menuTitle">Sections</h2>
-              <button className="buttonMenu" id='generalButton' onClick={sectionButtons}>😄 General </button>
-              <button className="buttonMenu" id='educationButton' onClick={sectionButtons}>🎓 Education </button>
-              <button className="buttonMenu" id='experienceButton' onClick={sectionButtons}>⚒️ Experience </button>
-              <button className="buttonMenu buttonTemplateMenu" id='templateButton' onClick={sectionButtons}>📃 Render Resume </button>
-          </div>
+          <SideSections sectionButtons={sectionButtons} />
           <div className='app'>
             <section className="formSection section-visible" id="generalSection">
               <h2 className='titleSection'>General Information</h2>
