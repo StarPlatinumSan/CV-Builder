@@ -2,14 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './components/App'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import "./styles/main.scss"
+import { ThemeProvider } from './components/ThemeContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <main className="container">
-      <Header />
+    <Header />
+    <ThemeProvider>
       <App />
-      <div className='author'><p>By <a className='nameAuthor' href="https://github.com/StarPlatinumSan">StarPlatinumSan</a></p></div>
+      <Footer />
+    </ThemeProvider> 
     </main>
   </React.StrictMode>,
 )

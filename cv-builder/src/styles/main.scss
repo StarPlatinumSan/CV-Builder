@@ -14,6 +14,56 @@
 
 html, body {
     min-height: 100vh;
+    transition: background-color 0.5s ease;
+}
+
+h2 {
+    transition: background-color 0.5s ease;
+}
+
+body.dark {
+    background-color: $dark;
+}
+
+body.light {
+    background-color: $lightModeWhite;
+
+    h2 {
+        background-color: $lightModeWhite;
+        color: $dark;
+    }
+    
+    input {
+        background-color: whitesmoke;
+        border: 1px solid white;
+        color: $dark;
+    }
+
+    label {
+        color: $dark;
+    }
+
+    .menu {
+        background-color: $lightModeWhite;
+    }
+    
+    .menuSlideDown .menu {
+        background-color: $darkCoral;
+
+        button {
+            background-color: $lightModeWhite;
+            color: $dark;
+        }
+
+        .buttonTemplateMenu {
+            background-color: $lightGrayText;
+            color: $lightModeWhite;
+        }
+
+        .menuTitle {
+            color: $lightModeWhite;
+        }
+    }
 }
 
 .container {
@@ -21,18 +71,18 @@ html, body {
     flex-direction: column;
     gap: 1rem;
     overflow-x: hidden;
-    background-color: $dark;
     min-height: 100vh;
     position: relative;
+    justify-content: space-between;
+}
+
+.footer {
+    justify-self: flex-end;
 }
 
 .author {
-    text-align: center;
-    position: relative;
-    display: inline-block;
-
     .nameAuthor {
-        color: whitesmoke;
+        color: $coral;
         text-decoration: none;
         transition: transform 0.5s ease;
         display: inline-block;
@@ -46,6 +96,7 @@ html, body {
 
 .menu {
     display: none;
+    transition: background-color 0.5s ease;
 }
 
 @media screen and (min-width: 800px) {
@@ -55,6 +106,14 @@ html, body {
 
     .menu {
         display: flex;
+    }
+
+    .menuSlideDown {
+        display: none;
+    }
+
+    .mobileMenu {
+        display: none;
     }
 
     .app {

@@ -11,6 +11,10 @@
     justify-content: center;
 }
 
+.menuTitle {
+    background-color: inherit!important;
+}
+
 .buttonMenu {
     background: $lightCoral;
     border: none;
@@ -18,7 +22,7 @@
     padding: 2rem;
     transition: transform 0.2s ease;
     color: $lightWhiteText;
-    font-size: 1.2rem;
+    font-size: clamp(0.8em, 5vw, 1.25em);
     position: relative;
 
     &:hover {
@@ -43,6 +47,7 @@
 
 .menuTitle {
     color: $lightWhiteText;
+    background-color: $dark;
     align-self: center;
     position: absolute;
     top: -1rem;

@@ -160,6 +160,9 @@ export default function App() {
 
   const sectionButtons = (event) => {
     const btn = event.target.id;
+    if (window.screen.width < 800) {
+      showMenu();
+    }
     if(btn === "generalButton") {
       handleSectionTransition("general");
     } else if (btn === "educationButton") {
@@ -180,10 +183,12 @@ export default function App() {
   /* FUNCTION */
 
   return (
-    <div className="mainApp">
+    <div className={`mainApp`}>
       {!showTemplate ? (
       <>
         <div className={`menuSlideDown ${isMenuOpen ? 'open' : ''}`}>
+          <SideSections sectionButtons={sectionButtons} />
+          <span>CV Builder made by StarPlatinumSan using React, Vite and SCSS.</span>
           <button className={`mobileMenu ${rotated ? 'rotated' : ''}`} onClick={showMenu}></button>
         </div>
         
@@ -208,11 +213,11 @@ export default function App() {
                 <div className="contactField">
                   <div className="field contact">
                     <label htmlFor="email">Email:</label>
-                    <input type="text" id="email" name='email' className='inputText' value={generalData.email} onChange={handleChangeInputs} required />
+                    <input type="email" id="email" name='email' className='inputText' value={generalData.email} onChange={handleChangeInputs} required />
                   </div>
                   <div className="field contact">
                     <label htmlFor="phoneNumber">Phone Number:</label>
-                    <input type="text" id="phoneNumber" name="phoneNumber" className='inputText' value={generalData.phoneNumber} onChange={handleChangeInputs} placeholder="123-456-7890" required />
+                    <input type="tel" id="phoneNumber" name="phoneNumber" className='inputText' value={generalData.phoneNumber} onChange={handleChangeInputs} placeholder="123-456-7890" pattern="(\d{3}-?\d{3}-?\d{4})|(\d{10})" required />
                   </div>
                 </div>
                 
@@ -270,6 +275,10 @@ export default function App() {
                 <div className="field fieldExperience">
                   <label htmlFor="companyName">Company Name:</label>
                   <input type="text" id="companyName" name='companyName' className='inputText' value={experienceData.companyName} onChange={handleChangeInputs} />
+                </div>
+                <div className="field fieldExperience">
+                  <label htmlFor="positionTitle">Position Title:</label>
+                  <input type="text" id="positionTitle" name='positionTitle' className='inputText' value={experienceData.positionTitle} onChange={handleChangeInputs} />
                 </div>
                 <div className='experienceDate'>
                   <div className="field fieldExperience">

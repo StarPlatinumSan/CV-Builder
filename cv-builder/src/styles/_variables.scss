@@ -4,15 +4,9 @@ $lightCoral: #ff6846;
 $cyanBlue: #03ebeb;
 $darkCyanBlue: #00a2aa;
 
-$lightGrayText: #515151;
-$lightWhiteText: #dddcdc;
 $lightDark: #3b3b3b;
 $dark: #121212;
+$lightWhiteText: #dddcdc;
+$lightGrayText: #515151;
 
-@mixin light-mode {
-    $lightDark: rgb(207, 207, 207);
-    $dark: white;
-    $lightWhiteText: rgb(65, 65, 65);
-    $lightGrayText: #222222;
-}
-
+$lightModeWhite: rgb(228, 228, 228);

@@ -1,17 +1,75 @@
 @use "variables" as *;
+@use "themes" as *;
 
 .footer {
     background: $dark;
+    width: 100%;
+}
+
+.background {
     display: flex;
-    position: absolute;
-    bottom: 5px;
-    width: 100vw;
-    margin-top: 1rem;
+    justify-content: space-between;
+    width: 100%;
+
+    & > * {
+        margin: 0.5rem;
+    }
+    
 }
 
 .author {
     color: $lightWhiteText;
     font-size: 0.75rem;
     text-align: center;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnFooter {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 0.75rem;
+    justify-self: right;
+}
+
+.btnFooter input[type="checkbox"] {
+    position: relative;
+    background-color: #222;
+    border: none;
+    width: 80px;
+    height: 40px;
+    appearance: none;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0 2px 2px #ffffff33, inset 0 -2px 2px #ffffff33;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.btnFooter input:checked[type="checkbox"] {
+    background-color: #f9f9f9; 
+    box-shadow: inset 0 2px 2px #5858581a, inset 0 -2px 2px #5858581a;
+}
+
+.btnFooter input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    top: 0px;
+    right: 0px;
+    background: linear-gradient(to bottom, #444, #222); 
+    transition: 0.5s;
+    box-shadow: inset 0 2px 2px #ffffff33, inset 0 -2px 2px #ffffff33;
+    border: 2px solid #444; 
+}
+
+.btnFooter input:checked[type="checkbox"]::before {
+    background: linear-gradient(to bottom, #eaeaea, #f9f9f9);
+    box-shadow: inset 0 2px 2px #fff, inset 0 -2px 2px #fff;
+    transform: translateX(-40px);
+    border: 2px solid #eaeaea;
 }
