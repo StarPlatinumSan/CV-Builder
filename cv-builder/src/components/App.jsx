@@ -102,7 +102,7 @@ export default function App() {
 
   /* FUNCTION */
   
-  const handleChange = (e) => {
+  const handleChangeInputs = (e) => {
     const {name, value} = e.target;
     const section = e.target.closest('form').dataset.section;
   
@@ -196,37 +196,37 @@ export default function App() {
 
                   <div className="name field">
                     <label htmlFor="firstName">First Name:</label>
-                    <input type="text" id="firstName" name='firstName' className='inputText' value={generalData.firstName} onChange={handleChange} required />
+                    <input type="text" id="firstName" name='firstName' className='inputText' value={generalData.firstName} onChange={handleChangeInputs} required />
                   </div>
                   
                   <div className="name field">
                     <label htmlFor="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name='lastName' className='inputText' value={generalData.lastName} onChange={handleChange} required />
+                    <input type="text" id="lastName" name='lastName' className='inputText' value={generalData.lastName} onChange={handleChangeInputs} required />
                   </div>
 
                 </div>
                 <div className="contactField">
                   <div className="field contact">
                     <label htmlFor="email">Email:</label>
-                    <input type="text" id="email" name='email' className='inputText' value={generalData.email} onChange={handleChange} required />
+                    <input type="text" id="email" name='email' className='inputText' value={generalData.email} onChange={handleChangeInputs} required />
                   </div>
                   <div className="field contact">
                     <label htmlFor="phoneNumber">Phone Number:</label>
-                    <input type="text" id="phoneNumber" name="phoneNumber" className='inputText' value={generalData.phoneNumber} onChange={handleChange} placeholder="123-456-7890" required />
+                    <input type="text" id="phoneNumber" name="phoneNumber" className='inputText' value={generalData.phoneNumber} onChange={handleChangeInputs} placeholder="123-456-7890" required />
                   </div>
                 </div>
                 
                 <div className="field">
                   <label htmlFor="address">Address:</label>
-                  <input type="text" id="address" name='address' className='inputText' value={generalData.address} onChange={handleChange} required />
+                  <input type="text" id="address" name='address' className='inputText' value={generalData.address} onChange={handleChangeInputs} required />
                 </div>
                 <div className="field">
                   <label htmlFor="portfolio">Portfolio:</label>
-                  <input type="text" id="portfolio" name='portfolio' className='inputText' value={generalData.portfolio} onChange={handleChange} />
+                  <input type="text" id="portfolio" name='portfolio' className='inputText' value={generalData.portfolio} onChange={handleChangeInputs} />
                 </div>
                 <div className="field">
                   <label htmlFor="linkedIn">LinkedIn:</label>
-                  <input type="text" id="linkedIn" name='linkedIn' className='inputText' value={generalData.linkedIn} onChange={handleChange} />
+                  <input type="text" id="linkedIn" name='linkedIn' className='inputText' value={generalData.linkedIn} onChange={handleChangeInputs} />
                 </div>
                 <button type='submit' className='submitBtn buttonApp'>Submit General</button>
               </form>
@@ -237,24 +237,24 @@ export default function App() {
               <form onSubmit={handleEducationSubmit} data-section="education">
                 <div className='field fieldEducation'>
                   <label htmlFor="school">School:</label>
-                  <input type="text" id="school" name='school' className='inputText' value={educationData.school} onChange={handleChange} />
+                  <input type="text" id="school" name='school' className='inputText' value={educationData.school} onChange={handleChangeInputs} />
                 </div>
                 <div className='field fieldEducation'>
                   <label htmlFor="fieldOfStudy">Field of Study:</label>
-                  <input type="text" id="fieldOfStudy" name='fieldOfStudy' className='inputText' value={educationData.fieldOfStudy} onChange={handleChange} />
+                  <input type="text" id="fieldOfStudy" name='fieldOfStudy' className='inputText' value={educationData.fieldOfStudy} onChange={handleChangeInputs} />
                 </div>
                 <div className='field fieldEducation'>
                   <label htmlFor="country">Country</label>
-                  <input type="text" id="country" name='country' className='inputText' value={educationData.country} onChange={handleChange} />
+                  <input type="text" id="country" name='country' className='inputText' value={educationData.country} onChange={handleChangeInputs} />
                 </div>
                 <div className="studyDate">
                   <div className='field fieldEducation'>
                     <label htmlFor="dateStartStudy">Date of study debut:</label>
-                    <input type="date" id="dateStartStudy" name='dateStartStudy' className='inputDate' value={educationData.dateStartStudy} onChange={handleChange} />
+                    <input type="date" id="dateStartStudy" name='dateStartStudy' className='inputDate' value={educationData.dateStartStudy} onChange={handleChangeInputs} />
                   </div>
                   <div className='field fieldEducation'>
                     <label htmlFor="dateStartStudy">Date of end (or expected):</label>
-                    <input type="date" id="dateStartStudy" name='dateStartStudy' className='inputDate' value={educationData.dateStartStudy} onChange={handleChange} />
+                    <input type="date" id="dateStartStudy" name='dateStartStudy' className='inputDate' value={educationData.dateStartStudy} onChange={handleChangeInputs} />
                   </div>
                 </div>
                 <div className='submitOrPrevious'>
@@ -269,21 +269,21 @@ export default function App() {
               <form onSubmit={handleExperienceSubmit} data-section="experience">
                 <div className="field fieldExperience">
                   <label htmlFor="companyName">Company Name:</label>
-                  <input type="text" id="companyName" name='companyName' className='inputText' value={experienceData.companyName} onChange={handleChange} />
+                  <input type="text" id="companyName" name='companyName' className='inputText' value={experienceData.companyName} onChange={handleChangeInputs} />
                 </div>
                 <div className='experienceDate'>
                   <div className="field fieldExperience">
                     <label htmlFor="dateFrom">Date From:</label>
-                    <input type="date" id="dateFrom" name='dateFrom' className='inputDate' value={experienceData.dateFrom} onChange={handleChange} />
+                    <input type="date" id="dateFrom" name='dateFrom' className='inputDate' value={experienceData.dateFrom} onChange={handleChangeInputs} />
                   </div>
                   <div className="field fieldExperience">
                     <label htmlFor="dateTo">Date To:</label>
-                    <input type="date" id="dateTo" name='dateTo' className='inputDate' value={experienceData.dateTo} onChange={handleChange} />
+                    <input type="date" id="dateTo" name='dateTo' className='inputDate' value={experienceData.dateTo} onChange={handleChangeInputs} />
                   </div>
                 </div>
                 <div className="field fieldExperience">
                   <label htmlFor="description">Description:</label>
-                  <textarea id="description" name='description' className='inputTextArea' value={experienceData.description} onChange={handleChange}></textarea>
+                  <textarea id="description" name='description' className='inputTextArea' value={experienceData.description} onChange={handleChangeInputs}></textarea>
                 </div>
                 <div className='submitOrPrevious'>
                   <button type='submit' className='submitBtn buttonApp submitGenerate'>Submit and generate resume</button>

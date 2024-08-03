@@ -16,7 +16,7 @@ input {
     transition: transform 0.3s ease;
 
     &:focus {
-        transform: scale(1.02);
+        transform: scale(1.015);
         outline: 1px solid $cyanBlue;
     }
     
@@ -202,25 +202,33 @@ textarea {
     position: absolute;
     border: none;
     background-color: inherit;
-    transition: transform 0.1s ease;
     display: inline-block;
     left: 0;
-    top: 25%;
+    bottom: 0;
+    transform: translateY(100%);
     z-index: 50;
     background-color: $darkCoral;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
 .mobileMenu.rotated {
-    transform: rotate(180deg);
+    transform: translateY(100%) rotate(180deg);
 }
 
 .menuSlideDown {
-    position: absolute;
-    padding: 2rem;
-    width: 95vw;
-    background-color: blue;
-    top: -1rem;
-    z-index: 45;
+    position: fixed;
+    width: 100vw;
+    height: 80vh;
+    z-index: 100;
+    background-color: $darkCoral;
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    transform: translateY(-80vh);
+    transition: transform 1s ease;
+}
+
+.menuSlideDown.open {
+    transform: translateY(0vh);
 }
 
