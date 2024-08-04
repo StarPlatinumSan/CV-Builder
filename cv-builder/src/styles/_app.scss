@@ -3,6 +3,7 @@
 
 body {
     background-color: $dark;
+    overflow-x: hidden;
 }
 
 label {
@@ -69,6 +70,54 @@ textarea {
 
 }
 
+.addRemoveButtons {
+    display: flex;
+    gap: 1rem;
+}
+
+.addBtn {
+    background-image: url('/plus.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    background-color: green;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.removeBtn {
+    background-image: url('/minus.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    background-color: red;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+
+    &:hover {
+        background-color: $lightDark;
+    }
+}
+
+.alertMsg, .alertMsgExp {
+    color: $darkCoral;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.breakLine {
+    margin-top: 0.75rem;
+    color: $coral;
+    padding-top: 2px;
+    background-color: $coral;
+    border: none;
+}
+
 .mainApp {
     display: flex;
     align-self: center;
@@ -92,6 +141,31 @@ textarea {
     width: 100%;
 }
 
+.formDiv {
+    max-height: 40rem;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow-y: auto;
+
+    & > * {
+        width: 100%;
+    }
+}
+
+.titleSection {
+    color: $lightWhiteText;
+    background-color: $dark;
+    position: absolute;
+    font-size: clamp(0.5rem, 7vw, 1.75rem);
+    top: -2rem;
+    left: -1rem;
+    transform: translate(-0.4rem, -50%);
+    overflow: visible;
+    overflow-y: visible;
+    z-index: 1;
+}
+
 .field {
     display: flex;
     flex-direction: column;
@@ -111,15 +185,7 @@ textarea {
 
 /* BUG */
 
-.titleSection {
-    color: $lightWhiteText;
-    background-color: $dark;
-    position: absolute;
-    font-size: clamp(0.5rem, 7vw, 1.75rem);
-    top: -2rem;
-    left: -1rem;
-    transform: translate(-0.4rem, -50%);
-}
+
 
 /* SEPARATION */
 

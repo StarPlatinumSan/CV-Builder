@@ -13,21 +13,21 @@ export default function App() {
     linkedIn: ''
   })
   
-  const [educationData, setEducationData] = useState({
+  const [educationData, setEducationData] = useState([{
     school: '',
     fieldOfStudy: '',
     country: '',
     dateStartStudy: '',
     dateEndStudy: ''
-  })
+  }])
 
-  const [experienceData, setExperienceData] = useState({
+  const [experienceData, setExperienceData] = useState([{
     companyName: '',
     positionTitle: '',
     dateFrom: '',
     dateTo: '',
     description: ''
-  })
+  }])
 
   /* FUNCTION */
 
@@ -37,6 +37,63 @@ export default function App() {
   const [rotated, setIsRotated] = useState(false);
 
   /* FUNCTION */
+
+  const addEducation = () => {
+    const alertMsg = document.querySelector(".alertMsg");
+    if(educationData.length < 5) {
+      setEducationData([...educationData, { school: '', fieldOfStudy: '', country: '', dateStartStudy: '', dateEndStudy: '' }]);
+    } else {
+      alertMsg.textContent = "You've reached your limit of 5 educations.";
+
+      setTimeout(() => {
+        alertMsg.textContent = "";
+      }, 2000);
+    }
+  };
+
+  const addExperience = () => {
+    const alertMsgExp = document.querySelector(".alertMsgExp");
+    if(experienceData.length < 5) {
+      setExperienceData([...experienceData, { companyName: '', positionTitle: '', dateFrom: '', dateTo: '', description: '' }]);
+    } else {
+      alertMsgExp.textContent = "You've reached your limit of 5 experiences.";
+
+      setTimeout(() => {
+        alertMsgExp.textContent = "";
+      }, 2000);
+    }
+    
+  };
+
+  const removeEducation = () => {
+    const alertMsg = document.querySelector(".alertMsg");
+
+    if(educationData.length > 1) {
+      setEducationData((prevItems) => prevItems.slice(0, -1));
+
+      alertMsg.textContent = "Removed education.";
+
+      setTimeout(() => {
+        alertMsg.textContent = "";
+      }, 1000);
+    }
+    
+  }
+  
+  const removeExperience = () => {
+    const alertMsgExp = document.querySelector(".alertMsgExp");
+
+    if(experienceData.length > 1) {
+      setExperienceData((prevItems) => prevItems.slice(0, -1));
+
+      alertMsgExp.textContent = "Removed experience.";
+
+      setTimeout(() => {
+        alertMsgExp.textContent = "";
+      }, 1000);
+    }
+    
+  }
 
   const handleSectionTransition = (nextSection) => {
     handleCurrentFormSubmission();
@@ -102,27 +159,24 @@ export default function App() {
 
   /* FUNCTION */
   
-  const handleChangeInputs = (e) => {
-    const {name, value} = e.target;
-    const section = e.target.closest('form').dataset.section;
+  const handleChangeInputs = (e, index, type) => {
+    const { name, value } = e.target;
   
-    if (section === 'general') {
-      setGeneralData({
-        ...generalData,
-        [name]: value
-      })
-    } else if (section === 'education') {
-      setEducationData({
-        ...educationData,
-        [name]: value
-      })
-    } else if(section === 'experience') {
-      setExperienceData({
-        ...experienceData,
-        [name]: value
-      })
+    if (type === 'general') {
+      setGeneralData({...generalData, [name]: value});
+
+    } else if (type === 'education') {
+      const newEducationData = [...educationData];
+      newEducationData[index][name] = value;
+      setEducationData(newEducationData);
+
+    } else if (type === 'experience') {
+      const newExperienceData = [...experienceData];
+      newExperienceData[index][name] = value;
+      setExperienceData(newExperienceData);
+
     }
-  }
+  };
 
   /* FUNCTION */
 
@@ -196,111 +250,139 @@ export default function App() {
           <div className='app'>
             <section className="formSection section-visible" id="generalSection">
               <h2 className='titleSection'>General Information</h2>
+              <div className="formDiv">
               <form onSubmit={handleGeneralSubmit} data-section="general">
                 <div className="field fullName">
 
                   <div className="name field">
                     <label htmlFor="firstName">First Name:</label>
-                    <input type="text" id="firstName" name='firstName' className='inputText' value={generalData.firstName} onChange={handleChangeInputs} required />
+                    <input type="text" id="firstName" name='firstName' className='inputText' value={generalData.firstName} onChange={(e) => handleChangeInputs(e, null, 'general')} required />
                   </div>
                   
                   <div className="name field">
                     <label htmlFor="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name='lastName' className='inputText' value={generalData.lastName} onChange={handleChangeInputs} required />
+                    <input type="text" id="lastName" name='lastName' className='inputText' value={generalData.lastName} onChange={(e) => handleChangeInputs(e, null, 'general')} required />
                   </div>
 
                 </div>
                 <div className="contactField">
                   <div className="field contact">
                     <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name='email' className='inputText' value={generalData.email} onChange={handleChangeInputs} required />
+                    <input type="email" id="email" name='email' className='inputText' value={generalData.email} onChange={(e) => handleChangeInputs(e, null, 'general')} required />
                   </div>
                   <div className="field contact">
                     <label htmlFor="phoneNumber">Phone Number:</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" className='inputText' value={generalData.phoneNumber} onChange={handleChangeInputs} placeholder="123-456-7890" pattern="(\d{3}-?\d{3}-?\d{4})|(\d{10})" required />
+                    <input type="tel" id="phoneNumber" name="phoneNumber" className='inputText' value={generalData.phoneNumber} onChange={(e) => handleChangeInputs(e, null, 'general')} placeholder="123-456-7890" pattern="(\d{3}-?\d{3}-?\d{4})|(\d{10})" required />
                   </div>
                 </div>
                 
                 <div className="field">
                   <label htmlFor="address">Address:</label>
-                  <input type="text" id="address" name='address' className='inputText' value={generalData.address} onChange={handleChangeInputs} required />
+                  <input type="text" id="address" name='address' className='inputText' value={generalData.address} onChange={(e) => handleChangeInputs(e, null, 'general')} required />
                 </div>
                 <div className="field">
                   <label htmlFor="portfolio">Portfolio:</label>
-                  <input type="text" id="portfolio" name='portfolio' className='inputText' value={generalData.portfolio} onChange={handleChangeInputs} />
+                  <input type="text" id="portfolio" name='portfolio' className='inputText' value={generalData.portfolio} onChange={(e) => handleChangeInputs(e, null, 'general')} />
                 </div>
                 <div className="field">
                   <label htmlFor="linkedIn">LinkedIn:</label>
-                  <input type="text" id="linkedIn" name='linkedIn' className='inputText' value={generalData.linkedIn} onChange={handleChangeInputs} />
+                  <input type="text" id="linkedIn" name='linkedIn' className='inputText' value={generalData.linkedIn} onChange={(e) => handleChangeInputs(e, null, 'general')} />
                 </div>
                 <button type='submit' className='submitBtn buttonApp'>Submit General</button>
               </form>
+              </div>
             </section>
 
             <section className='formSection section-hidden' id="educationSection">
-            <h2 className='titleSection'>Education</h2>
-              <form onSubmit={handleEducationSubmit} data-section="education">
-                <div className='field fieldEducation'>
-                  <label htmlFor="school">School:</label>
-                  <input type="text" id="school" name='school' className='inputText' value={educationData.school} onChange={handleChangeInputs} />
-                </div>
-                <div className='field fieldEducation'>
-                  <label htmlFor="fieldOfStudy">Field of Study:</label>
-                  <input type="text" id="fieldOfStudy" name='fieldOfStudy' className='inputText' value={educationData.fieldOfStudy} onChange={handleChangeInputs} />
-                </div>
-                <div className='field fieldEducation'>
-                  <label htmlFor="country">Country</label>
-                  <input type="text" id="country" name='country' className='inputText' value={educationData.country} onChange={handleChangeInputs} />
-                </div>
-                <div className="studyDate">
-                  <div className='field fieldEducation'>
-                    <label htmlFor="dateStartStudy">Date of study debut:</label>
-                    <input type="date" id="dateStartStudy" name='dateStartStudy' className='inputDate' value={educationData.dateStartStudy} onChange={handleChangeInputs} />
+              <h2 className='titleSection'>Education</h2>
+              <div className="formDiv">
+                <form onSubmit={handleEducationSubmit} data-section="education">
+                  {educationData.map((edu, index) => (
+                    <div key={index}>
+                      <div className='field fieldEducation'>
+                        <label htmlFor={`school-${index}`}>School:</label>
+                        <input type="text" id={`school-${index}`} name='school' className='inputText' value={edu.school} onChange={(e) => handleChangeInputs(e, index, 'education')} />
+                      </div>
+                      <div className='field fieldEducation'>
+                        <label htmlFor={`fieldOfStudy-${index}`}>Field of Study:</label>
+                        <input type="text" id={`fieldOfStudy-${index}`} name='fieldOfStudy' className='inputText' value={edu.fieldOfStudy} onChange={(e) => handleChangeInputs(e, index, 'education')} />
+                      </div>
+                      <div className='field fieldEducation'>
+                        <label htmlFor={`country-${index}`}>Country:</label>
+                        <input type="text" id={`country-${index}`} name='country' className='inputText' value={edu.country} onChange={(e) => handleChangeInputs(e, index, 'education')} />
+                      </div>
+                      <div className="studyDate">
+                        <div className='field fieldEducation'>
+                          <label htmlFor={`dateStartStudy-${index}`}>Date of study debut:</label>
+                          <input type="date" id={`dateStartStudy-${index}`} name='dateStartStudy' className='inputDate' value={edu.dateStartStudy} onChange={(e) => handleChangeInputs(e, index, 'education')} />
+                        </div>
+                        <div className='field fieldEducation'>
+                          <label htmlFor={`dateEndStudy-${index}`}>Date of end (or expected):</label>
+                          <input type="date" id={`dateEndStudy-${index}`} name='dateEndStudy' className='inputDate' value={edu.dateEndStudy} onChange={(e) => handleChangeInputs(e, index, 'education')} />
+                        </div>
+                      </div>
+                      <hr className='breakLine' />
+                    </div>
+                  ))}
+                  <div className='addRemoveButtons'>
+                    <button type='button' className='addBtn buttonApp' onClick={addEducation}></button>
+                    <button type='button' className='removeBtn buttonApp' id="removeEdu" onClick={removeEducation}></button>
+                    <span className='alertMsg'></span>
                   </div>
-                  <div className='field fieldEducation'>
-                    <label htmlFor="dateStartStudy">Date of end (or expected):</label>
-                    <input type="date" id="dateStartStudy" name='dateStartStudy' className='inputDate' value={educationData.dateStartStudy} onChange={handleChangeInputs} />
+
+                  <div className='submitOrPrevious'>
+                    <button type='submit' className='submitBtn buttonApp'>Submit Education</button>
+                    <button type='button' className='submitBtn buttonApp previousBtn' onClick={handlePrevious}>Previous</button>
                   </div>
-                </div>
-                <div className='submitOrPrevious'>
-                  <button type='submit' className='submitBtn buttonApp'>Submit Education</button>
-                  <button type='button' className='submitBtn buttonApp previousBtn' onClick={handlePrevious}>Previous</button>
-                </div>
-              </form>      
+                </form>
+              </div>
             </section>
 
             <section className="formSection section-hidden" id="experienceSection">
-            <h2 className='titleSection'>Experience</h2>
-              <form onSubmit={handleExperienceSubmit} data-section="experience">
-                <div className="field fieldExperience">
-                  <label htmlFor="companyName">Company Name:</label>
-                  <input type="text" id="companyName" name='companyName' className='inputText' value={experienceData.companyName} onChange={handleChangeInputs} />
-                </div>
-                <div className="field fieldExperience">
-                  <label htmlFor="positionTitle">Position Title:</label>
-                  <input type="text" id="positionTitle" name='positionTitle' className='inputText' value={experienceData.positionTitle} onChange={handleChangeInputs} />
-                </div>
-                <div className='experienceDate'>
-                  <div className="field fieldExperience">
-                    <label htmlFor="dateFrom">Date From:</label>
-                    <input type="date" id="dateFrom" name='dateFrom' className='inputDate' value={experienceData.dateFrom} onChange={handleChangeInputs} />
+              <h2 className='titleSection'>Experience</h2>
+              <div className="formDiv">
+                <form onSubmit={handleExperienceSubmit} data-section="experience">
+                  {experienceData.map((exp, index) => (
+                    <div key={index}>
+                      <div className="field fieldExperience">
+                        <label htmlFor={`companyName-${index}`}>Company Name:</label>
+                        <input type="text" id={`companyName-${index}`} name='companyName' className='inputText' value={exp.companyName} onChange={(e) => handleChangeInputs(e, index, 'experience')} />
+                      </div>
+                      <div className="field fieldExperience">
+                        <label htmlFor={`positionTitle-${index}`}>Position Title:</label>
+                        <input type="text" id={`positionTitle-${index}`} name='positionTitle' className='inputText' value={exp.positionTitle} onChange={(e) => handleChangeInputs(e, index, 'experience')} />
+                      </div>
+                      <div className='experienceDate'>
+                        <div className="field fieldExperience">
+                          <label htmlFor={`dateFrom-${index}`}>Date From:</label>
+                          <input type="date" id={`dateFrom-${index}`} name='dateFrom' className='inputDate' value={exp.dateFrom} onChange={(e) => handleChangeInputs(e, index, 'experience')} />
+                        </div>
+                        <div className="field fieldExperience">
+                          <label htmlFor={`dateTo-${index}`}>Date To:</label>
+                          <input type="date" id={`dateTo-${index}`} name='dateTo' className='inputDate' value={exp.dateTo} onChange={(e) => handleChangeInputs(e, index, 'experience')} />
+                        </div>
+                      </div>
+                      <div className="field fieldExperience">
+                        <label htmlFor={`description-${index}`}>Description:</label>
+                        <textarea id={`description-${index}`} name='description' className='inputTextArea' value={exp.description} onChange={(e) => handleChangeInputs(e, index, 'experience')}></textarea>
+                      </div>
+                      <hr className='breakLine' />
+                    </div>
+                  ))}
+                  <div className='addRemoveButtons'>
+                    <button type='button' className='addBtn buttonApp' onClick={addExperience}></button>
+                    <button type='button' className='removeBtn buttonApp' id="removeExp" onClick={removeExperience}></button>
+                    <span className='alertMsgExp'></span>
                   </div>
-                  <div className="field fieldExperience">
-                    <label htmlFor="dateTo">Date To:</label>
-                    <input type="date" id="dateTo" name='dateTo' className='inputDate' value={experienceData.dateTo} onChange={handleChangeInputs} />
+                  
+                  <div className='submitOrPrevious'>
+                    <button type='submit' className='submitBtn buttonApp submitGenerate'>Submit and generate resume</button>
+                    <button type='button' className='submitBtn buttonApp previousBtn' onClick={handlePrevious}>Previous</button>
                   </div>
-                </div>
-                <div className="field fieldExperience">
-                  <label htmlFor="description">Description:</label>
-                  <textarea id="description" name='description' className='inputTextArea' value={experienceData.description} onChange={handleChangeInputs}></textarea>
-                </div>
-                <div className='submitOrPrevious'>
-                  <button type='submit' className='submitBtn buttonApp submitGenerate'>Submit and generate resume</button>
-                  <button type='button' className='submitBtn buttonApp previousBtn' onClick={handlePrevious}>Previous</button>
-                </div>
-              </form>
+                </form>
+              </div>
             </section>
-            </div>
+          </div>
           </> 
         ) : (
           <div className='templateContainer'>

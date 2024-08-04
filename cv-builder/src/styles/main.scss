@@ -39,6 +39,12 @@ body.light {
         color: $dark;
     }
 
+    textarea {
+        background-color: whitesmoke;
+        border: 1px solid white;
+        color: $dark;
+    }
+
     label {
         color: $dark;
     }
@@ -99,7 +105,7 @@ body.light {
     transition: background-color 0.5s ease;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 856px) {
     .main {
         display: flex;
     }
@@ -119,6 +125,26 @@ body.light {
     .app {
         min-width: 50vw;
     }
+
+    .formDiv {
+        max-height: 32rem;
+    }
+
+    .field {
+        & > * {
+            width: 100%;
+        }
+    }
+
+    .fullName {
+        flex-direction: row;  
+        gap: 1rem;
+
+
+        & > * {
+            width: 100%;
+        }
+    }
 }
 
 @media screen and (min-width: 1100px) {
@@ -129,30 +155,28 @@ body.light {
             max-width: 25%;
         }
 
-        .fullName {
-            flex-direction: row;  
-            justify-content: space-between;
-
-            & > * {
-                width: 100%;
-            }
-        }
-
         .studyDate {
             flex-direction: row;
+            gap: 1rem;
         }
 
         .experienceDate {
             flex-direction: row;
+            gap: 1rem;
         }
 
         .contactField {
             flex-direction: row;
+            gap: 1rem;
 
             .contact {
                 width: 100%;
             }
         }
+    }
+
+    .formDiv {
+        max-height: 28.5rem;
     }
 }
 
