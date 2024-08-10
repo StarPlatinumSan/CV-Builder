@@ -29,6 +29,12 @@ export default function App() {
     description: ''
   }])
 
+  const [projectData, setProjectData] = useState([{
+    projectName: '',
+    goal: '',
+    technologies: ''
+  }])
+
   /* FUNCTION */
 
   const [currentSection, setCurrentSection] = useState('general');
@@ -61,8 +67,20 @@ export default function App() {
       setTimeout(() => {
         alertMsgExp.textContent = "";
       }, 2000);
-    }
-    
+    }   
+  };
+
+  const addProject = () => {
+    const alertMsgPro = document.querySelector(".alertMsgPro");
+    if(projectData.length < 5) {
+      setProjectData([...projectData, { projectName: '', goal: '', technologies: '' }]);
+    } else {
+      alertMsgPro.textContent = "You've reached your limit of 5 projects.";
+
+      setTimeout(() => {
+        alertMsgPro.textContent = "";
+      }, 2000);
+    }  
   };
 
   const removeEducation = () => {
@@ -76,8 +94,7 @@ export default function App() {
       setTimeout(() => {
         alertMsg.textContent = "";
       }, 1000);
-    }
-    
+    }   
   }
   
   const removeExperience = () => {
@@ -92,7 +109,20 @@ export default function App() {
         alertMsgExp.textContent = "";
       }, 1000);
     }
-    
+  }
+
+  const removeProject = () => {
+    const alertMsgPro = document.querySelector(".alertMsgPro");
+
+    if(projectData.length > 1) {
+      setProjectData((prevItems) => prevItems.slice(0, -1));
+
+      alertMsgPro.textContent = "Removed Project.";
+
+      setTimeout(() => {
+        alertMsgPro.textContent = "";
+      }, 1000);
+    }
   }
 
   const handleSectionTransition = (nextSection) => {
@@ -122,6 +152,8 @@ export default function App() {
       console.log('Education Data submitted:', educationData);
     } else if (currentSection === 'experience') {
       console.log('Experience Data submitted:', experienceData);
+    } else if (currentSection === 'project') {
+      console.log('Project Data submitted:', projectData);
     }
   };
 
@@ -143,6 +175,11 @@ export default function App() {
 
   const handleExperienceSubmit = (e) => {
     e.preventDefault();
+    handleSectionTransition('project');
+  };
+
+  const handleProjectSubmit = (e) => {
+    e.preventDefault();
     handleTemplate();
   };
 
@@ -152,9 +189,11 @@ export default function App() {
     e.preventDefault();
     if(currentSection === "education") {
       handleSectionTransition("general");
-    } else {
+    } else if(currentSection === "experience") {
       handleSectionTransition("education");
-    }     
+    } else {
+      handleSectionTransition("experience");
+    }
   }
 
   /* FUNCTION */
@@ -175,6 +214,10 @@ export default function App() {
       newExperienceData[index][name] = value;
       setExperienceData(newExperienceData);
 
+    } else if (type === 'project') {
+      const newProjectData = [...projectData];
+      newProjectData[index][name] = value;
+      setProjectData(newProjectData);
     }
   };
 
@@ -193,6 +236,7 @@ export default function App() {
     const generalElement = document.getElementById('generalSection');
     const educationElement = document.getElementById('educationSection');
     const experienceElement = document.getElementById('experienceSection');
+    const projectElement = document.getElementById('projectSection');
   
     if (generalElement) {
       generalElement.classList.add('section-visible');
@@ -207,6 +251,11 @@ export default function App() {
     if (experienceElement) {
       experienceElement.classList.add('section-hidden');
       experienceElement.classList.remove('section-visible');
+    }
+
+    if(projectElement) {
+      projectElement.classList.add('section-hidden');
+      projectElement.classList.remove('section-visible');
     }
   };
 
@@ -223,6 +272,8 @@ export default function App() {
       handleSectionTransition("education");
     } else if (btn === "experienceButton") {
       handleSectionTransition("experience");
+    } else if (btn === "projectButton") {
+      handleSectionTransition("project");
     } else {
       handleTemplate();
     }
@@ -298,7 +349,7 @@ export default function App() {
               <div className="formDiv">
                 <form onSubmit={handleEducationSubmit} data-section="education">
                   {educationData.map((edu, index) => (
-                    <div key={index}>
+                    <div key={index} className='contentForm'>
                       <div className='field fieldEducation'>
                         <label htmlFor={`school-${index}`}>School:</label>
                         <input type="text" id={`school-${index}`} name='school' className='inputText' value={edu.school} onChange={(e) => handleChangeInputs(e, index, 'education')} />
@@ -343,7 +394,7 @@ export default function App() {
               <div className="formDiv">
                 <form onSubmit={handleExperienceSubmit} data-section="experience">
                   {experienceData.map((exp, index) => (
-                    <div key={index}>
+                    <div key={index} className='contentForm'>
                       <div className="field fieldExperience">
                         <label htmlFor={`companyName-${index}`}>Company Name:</label>
                         <input type="text" id={`companyName-${index}`} name='companyName' className='inputText' value={exp.companyName} onChange={(e) => handleChangeInputs(e, index, 'experience')} />
@@ -376,6 +427,41 @@ export default function App() {
                   </div>
                   
                   <div className='submitOrPrevious'>
+                    <button type='submit' className='submitBtn buttonApp'>Submit Experience</button>
+                    <button type='button' className='submitBtn buttonApp previousBtn' onClick={handlePrevious}>Previous</button>
+                  </div>
+                </form>
+              </div>
+            </section>
+
+            <section className="formSection section-hidden" id="projectSection">
+              <h2 className='titleSection'>Projects</h2>
+              <div className="formDiv">
+                <form onSubmit={handleProjectSubmit} data-section="project">
+                  {projectData.map((pro, index) => (
+                    <div key={index} className='contentForm'>
+                      <div className="field fieldProject">
+                        <label htmlFor={`projectName-${index}`}>Project Name:</label>
+                        <input type="text" id={`projectName-${index}`} name='projectName' className='inputText' value={pro.projectName} onChange={(e) => handleChangeInputs(e, index, 'project')} />
+                      </div>
+                      <div className="field fieldProject">
+                        <label htmlFor={`goal-${index}`}>Goal:</label>
+                        <textarea id={`goal-${index}`} name='goal' className='inputTextArea goalTextArea' value={pro.goal} onChange={(e) => handleChangeInputs(e, index, 'project')}></textarea>
+                      </div>
+                      <div className="field fieldProject">
+                        <label htmlFor={`technologies-${index}`}>Technologies used:</label>
+                        <input type="text" id={`technologies-${index}`} name='technologies' className='inputText' value={pro.technologies} onChange={(e) => handleChangeInputs(e, index, 'project')} />
+                      </div>
+                      <hr className='breakLine' />
+                    </div>
+                  ))}
+                  <div className='addRemoveButtons'>
+                    <button type='button' className='addBtn buttonApp' onClick={addProject}></button>
+                    <button type='button' className='removeBtn buttonApp' id="removePro" onClick={removeProject}></button>
+                    <span className='alertMsgPro'></span>
+                  </div>
+                  
+                  <div className='submitOrPrevious'>
                     <button type='submit' className='submitBtn buttonApp submitGenerate'>Submit and generate resume</button>
                     <button type='button' className='submitBtn buttonApp previousBtn' onClick={handlePrevious}>Previous</button>
                   </div>
@@ -390,6 +476,7 @@ export default function App() {
             generalData={generalData}
             educationData={educationData}
             experienceData={experienceData}
+            projectData={projectData}
             />
             <button type='button' className='buttonApp editButton' onClick={() => undoTemplate()}>Edit infos</button>
           </div>

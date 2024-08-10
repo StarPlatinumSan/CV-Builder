@@ -49,6 +49,10 @@ body.light {
         color: $dark;
     }
 
+    .author {
+        color: $dark;
+    }
+
     .menu {
         background-color: $lightModeWhite;
     }
@@ -127,7 +131,7 @@ body.light {
     }
 
     .formDiv {
-        max-height: 32rem;
+        max-height: 35rem;
     }
 
     .field {
@@ -144,6 +148,10 @@ body.light {
         & > * {
             width: 100%;
         }
+    }
+
+    .templateContainer {
+        flex-direction: row;
     }
 }
 
@@ -176,7 +184,11 @@ body.light {
     }
 
     .formDiv {
-        max-height: 28.5rem;
+        max-height: 32rem;
+    }
+
+    .contentForm {
+        max-height: 32rem;
     }
 }
 

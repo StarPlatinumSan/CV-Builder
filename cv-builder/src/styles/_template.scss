@@ -1,14 +1,49 @@
 @use "variables" as *;
 
-p {
-    color: white;
+.downloadButton, .editButton {
+    padding: 2rem;
+    background-color: $coral;
+    border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    color: whitesmoke;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+
+    &:hover {
+        cursor: pointer;
+        background-color: $darkCoral;
+        transform: scale(1.05);
+    }
+}
+
+.btnTextDownload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mainTemplate {
-    background-color: $coral;
-    padding: 2rem;
+    background-color: inherit;
+    border-radius: 15px;
+}
+
+.downloadButton {
+    display: flex;
+    gap: 1rem;
+    padding-left: 1rem;
+}
+
+.downloadSvg {
+    height: 3vh;
 }
 
 .editButton {
-    max-width: 50%!important;
+    background-color: $lightGrayText;
+    padding: 2rem;
+
+    &:hover {
+        background-color: $lightDark;
+    }
 }
