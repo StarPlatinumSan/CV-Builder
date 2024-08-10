@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 import jsPDF from 'jspdf';
 import download from '/public/download.svg';
 
