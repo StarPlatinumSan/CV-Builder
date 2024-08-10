@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { PureComponent } from 'react';
 import jsPDF from 'jspdf';
+import download from '/public/download.svg';
 
 export default class Template extends PureComponent {
     
@@ -204,7 +205,7 @@ export default class Template extends PureComponent {
         return (
         <div className='mainTemplate'>
             <button onClick={this.jsPdfGenerator} className='downloadButton'>
-                <img src="../src/assets/download.svg" alt="" className='downloadSvg' />
+                <img src={download} alt="" className='downloadSvg' />
                 <p className='btnTextDownload'>Generate and download PDF</p>
             </button>
         </div>
