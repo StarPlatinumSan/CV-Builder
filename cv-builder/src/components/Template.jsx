@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import jsPDF from 'jspdf';
 import download from '/public/download.svg';
 
@@ -9,7 +9,7 @@ export default class Template extends PureComponent {
         super(props);
 
         this.state = {
-            name: props.generalData.firstName + " " + props.generalData.lastName || "No name.",
+            name: props.generalData.firstName + " " + props.generalData.lastName,
             email: props.generalData.email || "no email",
             phone: props.generalData.phoneNumber || "no phone number",
             address: props.generalData.address || "no address",
@@ -43,7 +43,12 @@ export default class Template extends PureComponent {
 
         doc.setFontSize(28);
         doc.setFont("helvetica", "bold");
-        doc.text(this.state.name, pageWidth / 2, 50, { align: 'center' });
+        if(this.state.name != " ") {
+            doc.text(this.state.name, pageWidth / 2, 50, { align: 'center' });
+        } else {
+            doc.text("Your Name Here.", pageWidth / 2, 50, { align: 'center' });
+        }
+        
 
         doc.setFontSize(12);
         doc.setFont("helvetica", "normal");
