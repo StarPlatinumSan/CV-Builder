@@ -13,7 +13,7 @@ export default class Template extends PureComponent {
             email: props.generalData.email || "no email",
             phone: props.generalData.phoneNumber || "no phone number",
             address: props.generalData.address || "no address",
-            portfolio: props.generalData.portfolio || "Demonstrated skills and expertise through various roles, showcasing a strong commitment to continuous learning and professional growth.",
+            portfolio: props.generalData.portfolio || "Demonstrated skills and expertise through various positions, showcasing a strong commitment to continuous learning and professional growth.",
             linkedIn: props.generalData.linkedIn || "",
             education: props.educationData,
             experience: props.experienceData,
