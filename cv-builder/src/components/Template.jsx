@@ -204,7 +204,7 @@ export default class Template extends PureComponent {
         return (
         <div className='mainTemplate'>
             <button onClick={this.jsPdfGenerator} className='downloadButton'>
-                <img src="../../public/download.svg" alt="test" className='downloadSvg' />
+                <img src="../assets/download.svg" alt="" className='downloadSvg' />
                 <p className='btnTextDownload'>Generate and download PDF</p>
             </button>
         </div>

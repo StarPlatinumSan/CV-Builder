@@ -56,7 +56,7 @@ textarea {
     background-color: $lightCoral;
     border: none;
     border-radius: 2px;
-    font-size: 0.8em;
+    font-size: clamp(0.7rem, 3vw, 1rem);
     color: whitesmoke;
     transition: background-color 0.3s ease, transform 0.3s ease;
 
