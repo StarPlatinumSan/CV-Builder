@@ -28,7 +28,7 @@ export default class Template extends PureComponent {
         const pageHeight = doc.internal.pageSize.height;
         const leftColumnWidth = pageWidth * 0.35;
         const marginLeft = 20;
-        const textMaxWidth = leftColumnWidth - 1 * marginLeft;
+        const textMaxWidth = leftColumnWidth - 1.5 * marginLeft;
     
         const addPageIfNeeded = (yOffset) => {
             if (yOffset > pageHeight - 100) {
@@ -124,23 +124,14 @@ export default class Template extends PureComponent {
     
                 yOffset += 25;
             });
-        } else {
-            doc.setFont("helvetica", "bold");
-            doc.setFontSize(14);
-            doc.text("PROJECTS", leftColumnWidth + marginLeft, yOffset);
-            yOffset += 30;
-            doc.setFontSize(12);
-            doc.setFont("helvetica", "normal");
-            doc.text(`${this.state.portfolio}`, leftColumnWidth + marginLeft, yOffset);
-            yOffset += 10;
+
             doc.line(leftColumnWidth + marginLeft, yOffset, pageWidth - 20, yOffset);
+    
+            yOffset += 35;
             yOffset = addPageIfNeeded(yOffset);
         }
 
-        doc.line(leftColumnWidth + marginLeft, yOffset, pageWidth - 20, yOffset);
-    
-        yOffset += 35;
-        yOffset = addPageIfNeeded(yOffset);
+        
     
         // Education section
         doc.setFont("helvetica", "bold");
@@ -173,10 +164,6 @@ export default class Template extends PureComponent {
             doc.setFont("helvetica", "normal");
             doc.text("No education.", leftColumnWidth + marginLeft, yOffset);
     
-            yOffset += 5;
-    
-            doc.line(leftColumnWidth + marginLeft, yOffset, pageWidth - 20, yOffset);
-    
             yOffset += 35;
     
             yOffset = addPageIfNeeded(yOffset);
@@ -205,7 +192,7 @@ export default class Template extends PureComponent {
     
                 doc.text(descriptionText, leftColumnWidth + marginLeft, yOffset + 30, { maxWidth: pageWidth - leftColumnWidth - 2 * marginLeft });
     
-                yOffset += descriptionTextDimensions.h + 40;
+                yOffset += descriptionTextDimensions.h + 50;
             });
         } else {
             yOffset += 30;
@@ -214,8 +201,6 @@ export default class Template extends PureComponent {
             doc.text("No experience.", leftColumnWidth + marginLeft, yOffset);
             yOffset += 10;
         }
-    
-        doc.line(leftColumnWidth + marginLeft, yOffset, pageWidth - 20, yOffset);
     
         doc.save("resume.pdf");
     }
