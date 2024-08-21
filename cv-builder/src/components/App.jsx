@@ -9,6 +9,7 @@ export default function App() {
     email: '',
     phoneNumber: '',
     address: '',
+    skills: '',
     portfolio: '',
     linkedIn: ''
   })
@@ -330,6 +331,10 @@ export default function App() {
                 <div className="field">
                   <label htmlFor="address">Address:</label>
                   <input type="text" id="address" name='address' className='inputText' value={generalData.address} onChange={(e) => handleChangeInputs(e, null, 'general')} required />
+                </div>
+                <div className="field">
+                  <label htmlFor="skills">Skills:</label>
+                  <input type="text" id="skills" name='skills' className='inputText' value={generalData.skills} onChange={(e) => handleChangeInputs(e, null, 'general')} />
                 </div>
                 <div className="field">
                   <label htmlFor="portfolio">Portfolio:</label>
